@@ -1,0 +1,24 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+public class SkeletonsFromBones {
+
+	@SubscribeEvent
+	public void sendMessage(EntityJoinWorldEvent event){
+		if (!(event.entity instanceof EntityItem)) {
+			return;
+		}
+		
+		if (((EntityItem) event.entity).getEntityItem().getItem() != Items.bone) {
+			return;
+		}
+		
+		EntitySkeleton skeleton = new EntitySkeleton(event.world);
+	}
+}

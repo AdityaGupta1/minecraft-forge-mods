@@ -1,0 +1,15 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.event.entity.minecart.MinecartCollisionEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+public class ExplodingMinecarts {
+	
+	@SubscribeEvent
+	public void sendMessage(MinecartCollisionEvent event){
+		event.minecart.worldObj.createExplosion(event.minecart, event.minecart.posX, event.minecart.posY, event.minecart.posZ, 2, false);
+	}
+}

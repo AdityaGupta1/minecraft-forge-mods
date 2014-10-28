@@ -1,0 +1,20 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.init.Items;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+public class CreeperReinforcements {
+
+	@SubscribeEvent
+	public void sendMessage(ItemTossEvent event){
+		if (event.entityItem.getEntityItem().getItem() != Items.bone) {
+			return;
+		}
+		
+		EntitySkeleton skeleton = new EntitySkeleton(event.entity.worldObj);
+		event.entity.worldObj.spawnEntityInWorld(skeleton);
+	}
+}
