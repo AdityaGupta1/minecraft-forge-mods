@@ -1,0 +1,33 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.init.Items;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class NinjaSkills {
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void throwShuriken(PlayerInteractEvent event){
+		if (event.action != Action.RIGHT_CLICK_AIR && event.action != Action.RIGHT_CLICK_BLOCK) {
+			return;
+		}
+		
+		if (event.entityPlayer.getHeldItem() == null) {
+			return;
+		}
+		
+		if (event.entityPlayer.getHeldItem().getItem() != Items.nether_star) {
+			return;
+		}
+		
+		event.world.spawnEntityInWorld(new EntityShuriken(event.world, event.entityPlayer));
+		
+		if (!(event.entityPlayer.capabilities.isCreativeMode)) {
+			event.entityPlayer.getHeldItem().stackSize -= 1;
+		}
+	}
+}

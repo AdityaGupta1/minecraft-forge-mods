@@ -1,0 +1,18 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.projectile.EntitySnowball;
+import net.minecraft.world.World;
+
+public class EntityShuriken extends EntitySnowball {
+
+	public EntityShuriken(World p_i1774_1_, EntityLivingBase p_i1774_2_) {
+		super(p_i1774_1_, p_i1774_2_);
+		motionX *= 3;
+		motionY *= 3;
+		motionZ *= 3;
+	}
+	
+	
+
+}

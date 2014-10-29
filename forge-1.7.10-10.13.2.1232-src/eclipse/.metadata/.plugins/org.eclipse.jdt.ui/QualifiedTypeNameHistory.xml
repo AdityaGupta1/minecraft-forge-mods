@@ -2,4 +2,23 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="tv.twitch.chat.ChatChannelInfo"/>
 <fullyQualifiedTypeName name="net.minecraft.util.EnumChatFormatting"/>
+<fullyQualifiedTypeName name="cpw.mods.fml.common.gameevent.PlayerEvent"/>
+<fullyQualifiedTypeName name="net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent"/>
+<fullyQualifiedTypeName name="net.minecraftforge.event.entity.player.PlayerInteractEvent.Action"/>
+<fullyQualifiedTypeName name="net.minecraft.util.ChatComponentText"/>
+<fullyQualifiedTypeName name="cpw.mods.fml.relauncher.Side"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.entity.RenderManager"/>
+<fullyQualifiedTypeName name="net.minecraft.entity.item.EntityTNTPrimed"/>
+<fullyQualifiedTypeName name="net.minecraft.block.BlockRedstoneWire"/>
+<fullyQualifiedTypeName name="net.minecraft.block.BlockRedstoneRepeater"/>
+<fullyQualifiedTypeName name="net.minecraft.item.ItemCoal"/>
+<fullyQualifiedTypeName name="net.minecraft.item.ItemStack"/>
+<fullyQualifiedTypeName name="net.minecraft.init.Items"/>
+<fullyQualifiedTypeName name="net.minecraftforge.common.AchievementPage"/>
+<fullyQualifiedTypeName name="net.minecraft.stats.AchievementList"/>
+<fullyQualifiedTypeName name="net.minecraft.stats.Achievement"/>
+<fullyQualifiedTypeName name="net.minecraftforge.common.MinecraftForge"/>
+<fullyQualifiedTypeName name="net.minecraft.client.Minecraft"/>
+<fullyQualifiedTypeName name="net.minecraft.server.MinecraftServer"/>
+<fullyQualifiedTypeName name="cpw.mods.fml.common.registry.LanguageRegistry"/>
 </qualifiedTypeNameHistroy>

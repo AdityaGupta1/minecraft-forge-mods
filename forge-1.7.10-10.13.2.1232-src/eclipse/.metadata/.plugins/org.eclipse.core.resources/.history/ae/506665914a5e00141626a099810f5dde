@@ -1,0 +1,39 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+public class HangGlider {
+
+	@SubscribeEvent
+	public void makeJumpHigher(LivingUpdateEvent event){
+		if (!(event.entity instanceof EntityPlayer)) {
+			return;
+		}
+		
+		if (!(((EntityPlayer) event.entity).isSneaking())) {
+			return;
+		}
+		
+		if (!(((EntityPlayer) event.entity).isAirBorne)) {
+			return;
+		}
+		
+		if (event.entity.motionX != 0) {
+			if (event.entity.motionX < 0){
+				event.entity.motionX = -3;
+			} else {
+				event.entity.motionX = 3;
+			}
+		}
+		
+		if (event.entity.motionZ != 0) {
+			if (event.entity.motionZ < 0){
+				event.entity.motionZ = -3;
+			} else {
+				event.entity.motionZ = 3;
+			}
+		}
+	}
+}

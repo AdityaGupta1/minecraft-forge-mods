@@ -1,0 +1,66 @@
+package org.devoxx4kids.forge.mods;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.entity.player.EntityPlayer;
+
+public class TNTRainCommand implements ICommand {
+
+	@Override
+	public int compareTo(Object o) {
+		return 0;
+	}
+
+	@Override
+	public String getCommandName() {
+		return "tntrain";
+	}
+
+	@Override
+	public String getCommandUsage(ICommandSender p_71518_1_) {
+		return "/tntrain";
+	}
+
+	@Override
+	public List getCommandAliases() {
+		List aliases = new ArrayList();
+		aliases.add("nuke");
+		aliases.add("tnt");
+		return aliases;
+	}
+
+	@Override
+	public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
+		EntityPlayer player = (EntityPlayer) p_71515_1_;
+		player.worldObj.spawnEntityInWorld(new EntityTNTPrimed(player.worldObj, player.posX, player.posY + 10, player.posZ, player));
+	}
+
+	@Override
+	public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+		if (p_71519_1_ instanceof EntityPlayer) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public List addTabCompletionOptions(ICommandSender p_71516_1_,
+			String[] p_71516_2_) {
+		List tab = new ArrayList();
+		tab.add("nuke");
+		tab.add("tnt");
+		tab.add("tntrain");
+		return tab;
+	}
+
+	@Override
+	public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+		return false;
+	}
+
+}

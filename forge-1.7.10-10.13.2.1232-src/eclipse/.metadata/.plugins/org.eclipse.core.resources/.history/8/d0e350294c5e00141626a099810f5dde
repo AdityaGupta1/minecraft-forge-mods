@@ -1,0 +1,24 @@
+package org.devoxx4kids.forge.mods;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.util.ChatComponentText;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+public class NinjaSkills {
+
+	@SubscribeEvent
+	public void throwShuriken(PlayerInteractEvent event){
+		if (event.action != Action.RIGHT_CLICK_AIR && event.action != Action.RIGHT_CLICK_BLOCK) {
+			return;
+		}
+		
+		if (event.entityPlayer.getItemInUse().getUnlocalizedName() != "nether_star") {
+			return;
+		}
+		
+		event.entityPlayer.addChatMessage(new ChatComponentText("You threw a shuriken!"));
+	}
+}
