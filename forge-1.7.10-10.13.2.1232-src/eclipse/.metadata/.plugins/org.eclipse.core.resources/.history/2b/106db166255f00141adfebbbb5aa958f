@@ -1,0 +1,86 @@
+package org.devoxx4kids.forge.mods;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+
+public class FlamingPigs implements ICommand {
+	
+	private List aliases = new ArrayList();
+	private int numberOfTNTs = 0;
+	
+	public FlamingPigs() {
+		aliases.add("tnt");
+		aliases.add("explode");
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return 0;
+	}
+
+	@Override
+	public String getCommandName() {
+		return "tnt";
+	}
+
+	@Override
+	public String getCommandUsage(ICommandSender p_71518_1_) {
+		return "tnt <number of TNTs>";
+	}
+
+	@Override
+	public List getCommandAliases() {
+		return aliases;
+	}
+
+	@Override
+	public void processCommand(ICommandSender sender, String[] args) {
+		if (args.length != 1) {
+			sender.addChatMessage(new ChatComponentText(EnumChatFormatting.DARK_RED + "Invalid number of arguments!"));
+			return;
+		}
+		
+		try {
+			numberOfTNTs = Integer.parseInt(args[0]);
+		} catch(NumberFormatException e) {
+			sender.addChatMessage(new ChatComponentText(EnumChatFormatting.DARK_RED + "The argument \"" + args[0] + "\" is not a valid number!"));
+			return;
+		}
+		
+		EntityPlayer player = (EntityPlayer) sender;
+		
+		for (int i = 0 ; i < numberOfTNTs ; i++) {
+			EntityTNTPrimed tnt = new EntityTNTPrimed(player.worldObj, player.posX, player.posY + 5, player.posZ, player);
+			tnt.fuse = 80;
+			player.worldObj.spawnEntityInWorld(tnt);
+		}
+	}
+
+	@Override
+	public boolean canCommandSenderUseCommand(ICommandSender sender) {
+		if (sender instanceof EntityPlayer) {
+			return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public List addTabCompletionOptions(ICommandSender p_71516_1_,
+			String[] p_71516_2_) {
+		return null;
+	}
+
+	@Override
+	public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+		return false;
+	}
+
+}
